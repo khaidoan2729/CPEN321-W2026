@@ -1,14 +1,8 @@
 # Path to your Android SDK. Android Studio usually writes this for you.
-sdk.dir=/path/to/Android/sdk
+sdk.dir=/Users/macos/Library/Android/sdk
 
 # Backend base URL baked into the APK at build time.
-API_BASE_URL=https://cpen321-backend-579363237977.us-west1.run.app
+API_BASE_URL=http://35.192.138.68:3000
 
 # Google OAuth client ID.
 GOOGLE_CLIENT_ID=579363237977-4hpuo0hq1um9ns877et9r0jshgo735jr.apps.googleusercontent.com
-
-# Other variables for release keystore
-RELEASE_STORE_FILE=/Users/macos/keystore.jks
-RELEASE_STORE_PASSWORD=4caBarcelonavisca@
-RELEASE_KEY_ALIAS=key0
-RELEASE_KEY_PASSWORD=4caBarcelonavisca@

@@ -44,19 +44,6 @@ android {
         )
     }
 
-    // TAs please debug with debug key, I used my google password to create release key 
-    signingConfigs {
-        create("release") {
-            val storeFilePath = localProperty("RELEASE_STORE_FILE")
-            if (storeFilePath.isNotBlank()) {
-                storeFile = file(storeFilePath)
-                storePassword = localProperty("RELEASE_STORE_PASSWORD")
-                keyAlias = localProperty("RELEASE_KEY_ALIAS")
-                keyPassword = localProperty("RELEASE_KEY_PASSWORD")
-            }
-        }
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -64,12 +51,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            val hasReleaseKey = localProperty("RELEASE_STORE_FILE").isNotBlank()
-            signingConfig = if (hasReleaseKey) {
-                signingConfigs.getByName("release")
-            } else {
-                signingConfigs.getByName("debug")
-            }
         }
     }
     compileOptions {
