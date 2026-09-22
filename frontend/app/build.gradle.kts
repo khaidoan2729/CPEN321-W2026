@@ -44,6 +44,19 @@ android {
         )
     }
 
+    // TAs please debug with debug key, I used my google password to create release key 
+    signingConfigs {
+        create("release") {
+            val storeFilePath = localProperty("RELEASE_STORE_FILE")
+            if (storeFilePath.isNotBlank()) {
+                storeFile = file(storeFilePath)
+                storePassword = localProperty("RELEASE_STORE_PASSWORD")
+                keyAlias = localProperty("RELEASE_KEY_ALIAS")
+                keyPassword = localProperty("RELEASE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -51,6 +64,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            val hasReleaseKey = localProperty("RELEASE_STORE_FILE").isNotBlank()
+            signingConfig = if (hasReleaseKey) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
     compileOptions {
@@ -79,6 +98,14 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+    implementation(libs.okhttp)
+    implementation(libs.androidx.security.crypto)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.coil.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

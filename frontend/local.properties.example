@@ -2,9 +2,13 @@
 sdk.dir=/path/to/Android/sdk
 
 # Backend base URL baked into the APK at build time.
-API_BASE_URL=http://10.0.2.2:3000
+API_BASE_URL=https://cpen321-backend-579363237977.us-west1.run.app
 
 # Google OAuth client ID.
-GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_ID=579363237977-4hpuo0hq1um9ns877et9r0jshgo735jr.apps.googleusercontent.com
 
-# Other API keys, secrets, and configurations
+# Other variables for release keystore
+RELEASE_STORE_FILE=/Users/macos/keystore.jks
+RELEASE_STORE_PASSWORD=4caBarcelonavisca@
+RELEASE_KEY_ALIAS=key0
+RELEASE_KEY_PASSWORD=4caBarcelonavisca@

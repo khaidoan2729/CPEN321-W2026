@@ -10,7 +10,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - path: ./backend/.env
+      - ./backend/.env
     environment:
       MONGODB_URI: mongodb://mongo:27017/cpen321
     depends_on:
